@@ -1,0 +1,15 @@
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
+
+configure_make(
+    name = "fakechroot",
+    alwayslink = True,
+    configure_in_place = True,
+    lib_source = "@fakechroot_src//:sources",
+    out_lib_dir = "lib/fakechroot",
+    out_shared_libs = ["libfakechroot.so"],
+    configure_options = [
+        "--disable-static",
+        "--enable-shared",
+        "--disable-silent-rules",
+    ]
+)
